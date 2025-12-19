@@ -1,0 +1,22 @@
+﻿{
+  "manifest_version": 1,
+  "name": "ocr识别任务信息",
+  "version": "1.0",
+  "bgi_version": "0.36.1",
+  "description": "ocr识别任务信息并导出为文本文档",
+
+  "authors": [
+    {
+      "name": "ailingBen",
+      "link": "https://github.com/ailingBen"
+    }
+  ],
+
+  "settings_ui": "settings.json",
+
+  "main": "main.js",
+
+  "saved_files": [
+    "test/*.txt"
+  ]
+}

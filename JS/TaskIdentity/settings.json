@@ -1,0 +1,8 @@
+﻿[
+  {
+    "name": "inputValue",
+    "type": "input-text",
+    "label": "输入文件名（文件存于“根目录/test/”内，仅支持 .txt 格式）",
+    "default":"" 
+  }
+]

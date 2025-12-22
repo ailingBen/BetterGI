@@ -1,10 +1,10 @@
 ﻿(async function () {
-    //定义RecognitionArea类,存放识别区域坐标
-    class RecognitionArea {
-        static X = 875;
-        static Y = 235;
-        static Width = 895;
-        static Height = 60;
+    // 全局RECOGNITION_AREA,存放识别区域坐标
+    const RECOGNITION_AREA = {
+         X : 875,
+         Y : 235,
+         Width : 895,
+         Height : 60,
     }
     
     // 文件追加内容
@@ -37,10 +37,10 @@
 
             // 绘制红框
             let drawRegion = gameCaptureRegion.DeriveCrop(
-                RecognitionArea.X, 
-                RecognitionArea.Y, 
-                RecognitionArea.Width, 
-                RecognitionArea.Height).DrawSelf("icon");
+                RECOGNITION_AREA.X,
+                RECOGNITION_AREA.Y,
+                RECOGNITION_AREA.Width,
+                RECOGNITION_AREA.Height).DrawSelf("icon");
 
             // 延时
             await sleep(2000);
@@ -54,8 +54,8 @@
             
             // 显示图像尺寸和识别区域信息
             const imageInfo = `图像尺寸: ${genshin.width}x${genshin.height}
-识别区域: X=${RecognitionArea.X}, Y=${RecognitionArea.Y}, W=${RecognitionArea.Width}, H=${RecognitionArea.Height}
-区域比例: X=${(RecognitionArea.X/genshin.width*100).toFixed(1)}%, Y=${(RecognitionArea.Y/genshin.height*100).toFixed(1)}%`;
+识别区域: X=${RECOGNITION_AREA.X}, Y=${RECOGNITION_AREA.Y}, W=${RECOGNITION_AREA.Width}, H=${RECOGNITION_AREA.Height}
+区域比例: X=${(RECOGNITION_AREA.X/genshin.width*100).toFixed(1)}%, Y=${(RECOGNITION_AREA.Y/genshin.height*100).toFixed(1)}%`;
 
             log.info(imageInfo);
             
@@ -73,7 +73,7 @@
         let startTime = Date.now();
         let attemptCount = 0;
 
-        log.info(`识别区域: X=${RecognitionArea.X}, Y=${RecognitionArea.Y}, 宽度=${RecognitionArea.Width}, 高度=${RecognitionArea.Height}`);
+        log.info(`识别区域: X=${RECOGNITION_AREA.X}, Y=${RECOGNITION_AREA.Y}, 宽度=${RECOGNITION_AREA.Width}, 高度=${RECOGNITION_AREA.Height}`);
 
         while (Date.now() - startTime < timeout) {
             attemptCount++;
@@ -88,10 +88,10 @@
 
                 // 裁剪出识别区域
                 const croppedRegion = gameCaptureRegion.deriveCrop(
-                    RecognitionArea.X, 
-                    RecognitionArea.Y, 
-                    RecognitionArea.Width, 
-                    RecognitionArea.Height
+                    RECOGNITION_AREA.X, 
+                    RECOGNITION_AREA.Y, 
+                    RECOGNITION_AREA.Width, 
+                    RECOGNITION_AREA.Height
                 );
                 
                 let results = croppedRegion.findMulti(RecognitionObject.ocrThis);
